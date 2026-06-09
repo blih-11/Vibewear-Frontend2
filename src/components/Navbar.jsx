@@ -42,6 +42,8 @@ export default function Navbar() {
   const isActive = (to) => location.pathname === to;
 
   const iconColor = scrolled ? '#111' : '#fff';
+  // When menu is open, hamburger bars must always be dark (menu bg is white)
+  const barColor = menuOpen ? '#111' : iconColor;
 
   return (
     <>
@@ -77,9 +79,9 @@ export default function Navbar() {
             onClick={() => setMenuOpen(o => !o)}
             aria-label="Menu"
           >
-            <span style={{ background: iconColor }} className={`zttw-bar${menuOpen ? ' b1-open' : ''}`} />
-            <span style={{ background: iconColor, width: '18px' }} className={`zttw-bar${menuOpen ? ' b2-open' : ''}`} />
-            <span style={{ background: iconColor }} className={`zttw-bar${menuOpen ? ' b3-open' : ''}`} />
+            <span style={{ background: barColor }} className={`zttw-bar${menuOpen ? ' b1-open' : ''}`} />
+            <span style={{ background: barColor, width: '18px' }} className={`zttw-bar${menuOpen ? ' b2-open' : ''}`} />
+            <span style={{ background: barColor }} className={`zttw-bar${menuOpen ? ' b3-open' : ''}`} />
           </button>
         </div>
 
@@ -230,28 +232,28 @@ export default function Navbar() {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 padding: '1.1rem 0',
-                borderBottom: '1px solid #f0f0f0',
+                borderBottom: '1px solid #e0e0e0',
                 textDecoration: 'none',
                 fontFamily: 'var(--font-display)',
                 fontSize: 'clamp(2rem, 9vw, 3.4rem)',
                 fontWeight: 700,
-                color: isActive(link.to) ? '#000' : '#bbb',
+                color: '#000',
                 letterSpacing: '-0.01em',
               }}
             >
               <span>{link.label}</span>
-              <span style={{ color: '#ccc', fontSize: '1.3rem' }}>→</span>
+              <span style={{ color: '#999', fontSize: '1.3rem' }}>→</span>
             </Link>
           ))}
         </div>
-        <div style={{ padding: '1.5rem', display: 'flex', flexWrap: 'wrap', gap: '8px', borderTop: '1px solid #f0f0f0' }}>
+        <div style={{ padding: '1.5rem', display: 'flex', flexWrap: 'wrap', gap: '8px', borderTop: '1px solid #e0e0e0' }}>
           {CURRENCIES.slice(0, 6).map(cur => (
             <button key={cur.code} onClick={() => { setCurrency(cur.code); }}
               style={{
                 padding: '6px 12px', borderRadius: '8px', border: '1px solid',
-                borderColor: currency === cur.code ? '#000' : '#e0e0e0',
+                borderColor: currency === cur.code ? '#000' : '#ccc',
                 background: currency === cur.code ? '#000' : 'transparent',
-                color: currency === cur.code ? '#fff' : '#555',
+                color: currency === cur.code ? '#fff' : '#333',
                 fontSize: '0.72rem', cursor: 'pointer',
                 display: 'flex', alignItems: 'center', gap: '4px',
               }}>

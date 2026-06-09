@@ -225,10 +225,10 @@ export default function Home() {
           </div>
 
           {/* Mobile: full-width 1-at-a-time slider */}
-          <div className="ig-mobile-slider">
-            <div
-              ref={igSliderRef}
-              style={{
+          <div className="ig-mobile-slider" style={{ overflow: 'hidden' }}>
+  <div
+    ref={igSliderRef}
+    style={{
                 display: 'flex',
                 transform: `translateX(calc(-${igIndex * 100}%))`,
                 transition: 'transform 0.45s cubic-bezier(0.4,0,0.2,1)',
