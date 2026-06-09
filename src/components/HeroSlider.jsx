@@ -81,7 +81,7 @@ export default function HeroSlider() {
     timerRef.current = setInterval(() => {
       setFading(true);
       setTimeout(() => {
-        setCurrent(prev => (prev + 0) % slides.length);
+        setCurrent(prev => (prev + 1) % slides.length);
         setFading(false);
       }, 400);
     }, 5500);
